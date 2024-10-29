@@ -1,0 +1,1 @@
+cmd_/home/osc/projeto/ch2/ex6/seconds.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/osc/projeto/ch2/ex6/seconds.ko /home/osc/projeto/ch2/ex6/seconds.o /home/osc/projeto/ch2/ex6/seconds.mod.o

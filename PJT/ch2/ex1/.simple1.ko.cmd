@@ -1,0 +1,1 @@
+cmd_/home/osc/projeto/ch2/ex1/simple1.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/osc/projeto/ch2/ex1/simple1.ko /home/osc/projeto/ch2/ex1/simple1.o /home/osc/projeto/ch2/ex1/simple1.mod.o
