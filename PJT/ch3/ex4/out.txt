@@ -1,0 +1,8 @@
+total 44
+drwxrwxr-x 2 osc osc  4096 Oct 24 18:30 .
+drwxrwxr-x 6 osc osc  4096 Oct 24 17:59 ..
+-rw-rw-r-- 1 osc osc    31 Oct 24 18:18 in.txt
+-rwxrwxr-x 1 osc osc 13672 Oct 24 18:30 osh_pipe
+-rw-r--r-- 1 osc osc  8486 Oct 24 18:29 osh_pipe.c
+-rw-rw-r-- 1 osc osc     0 Oct 29 11:31 out.txt
+-rw-r--r-- 1 osc osc  1437 Oct 24 18:34 readme.c
