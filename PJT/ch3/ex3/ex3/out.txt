@@ -1,4 +1,0 @@
-in.txt
-osh_in_out
-osh_in_out.c
-out.txt
