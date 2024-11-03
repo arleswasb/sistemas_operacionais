@@ -1,1 +1,0 @@
-cmd_/home/osc/projeto/ch2/ex4/proc.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/osc/projeto/ch2/ex4/proc.ko /home/osc/projeto/ch2/ex4/proc.o /home/osc/projeto/ch2/ex4/proc.mod.o
