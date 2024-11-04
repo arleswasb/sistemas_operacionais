@@ -1,28 +1,32 @@
-## Compilação e Carregamento
+## Compilaï¿½ï¿½o e Carregamento
 
-1. **Compilar o módulo**:
+1. **Compilar o mï¿½dulo**:
     ```bash
     make
     ```
 
-2. **Carregar o módulo**:
+2. **Carregar o mï¿½dulo**:
     ```bash
-    sudo insmod pid2.ko
+    sudo insmod pid_v1.ko
     ```
 
-3. **Verificar se o módulo está carregado**:
+3. **Verificar se o mï¿½dulo estï¿½ carregado**:
     ```bash
     dmesg 
     ```
-   Se o módulo estiver carregado corretamente, você verá /proc/pid Criado como um modulo carregado.
+   Se o mï¿½dulo estiver carregado corretamente, vocï¿½ verï¿½ /proc/pid Criado como um modulo carregado.
 
 ## Testes
 
 1. **Escrever um valor no /proc/pid**:
     Para escrever um valor de PID, use o comando echo. Substitua "1395" pelo valor desejado:
 
+    utilise o comando pgrep "" para verificar um numero de PID ativo no kernel
+
+
+
     ```bash
-    echo "1395" > /proc/pid
+    echo "copie o numero aqui" > /proc/pid
     ```
 
 2. **Ler o valor formatado no `/proc/pid`**:
@@ -32,32 +36,32 @@
     ```bash
     cat /proc/pid
     ```
-    A saída deverá ser algo como:
+    A saï¿½da deverï¿½ ser algo como:
     ```plaintext
-    command = [bash] pid = [1395] state = [1]
+    command = [bash] pid = [numero] state = [1]
     ```
 
 3. **Repetir com outro valor de PID**:
     Para testar com outro valor, repita o processo de escrita e leitura:
     ```bash
-    echo "2567" > /proc/pid
+    echo "outro numero" > /proc/pid
     cat /proc/pid
     ```
-    Saída esperada:
+    Saï¿½da esperada:
     ---
     command = [bash] pid = [2567] state = [1]
     ```
 
-## Remoção do Módulo
+## Remoï¿½ï¿½o do Mï¿½dulo
 
-Para remover o módulo do kernel, use o comando:
+Para remover o mï¿½dulo do kernel, use o comando:
 ```bash
 sudo rmmod pid2
 
-**Verificar se o módulo foi descarregado**:
+**Verificar se o mï¿½dulo foi descarregado**:
     ```bash
     dmesg 
     ```
-   Se o módulo estiver carregado corretamente, você verá /proc/pid Removido como um modulo carregado.
+   Se o mï¿½dulo estiver carregado corretamente, vocï¿½ verï¿½ /proc/pid Removido como um modulo carregado.
 
 

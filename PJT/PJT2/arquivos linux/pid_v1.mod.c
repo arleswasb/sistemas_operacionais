@@ -23,6 +23,8 @@ __attribute__((section("__versions"))) = {
 	{ 0xdb7305a1, __VMLINUX_SYMBOL_STR(__stack_chk_fail) },
 	{ 0x4f8b5ddb, __VMLINUX_SYMBOL_STR(_copy_to_user) },
 	{ 0x28318305, __VMLINUX_SYMBOL_STR(snprintf) },
+	{ 0x57265882, __VMLINUX_SYMBOL_STR(pid_task) },
+	{ 0x737d8afe, __VMLINUX_SYMBOL_STR(find_vpid) },
 	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
 	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
 	{ 0x779a18af, __VMLINUX_SYMBOL_STR(kstrtoll) },
@@ -37,4 +39,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "AA04F8170C4D8583DA09401");
+MODULE_INFO(srcversion, "1907EABE1547D7EBB30C358");
