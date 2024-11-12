@@ -36,7 +36,7 @@ int redirecionamento_manual(char *args[], int *input_fd, int *output_fd) {
 // Função para executar um comando, com redirecionamento e execução em segundo plano
 
 
-void execute_command(char *args[], int input_fd, int output_fd, int run_in_background) {
+void Cria_Processo(char *args[], int input_fd, int output_fd, int run_in_background) {
     pid_t pid = fork();                                                                 // Cria um novo processo
     if (pid == 0) {                                                                     // Código executado pelo processo filho
         if (input_fd >= 0) dup2(input_fd, STDIN_FILENO);                                // Redireciona a entrada, se necessário
@@ -136,6 +136,7 @@ int main(void) {
                 waitpid(pid2, NULL, 0);
             }
         } else {
-            execute_command(args, input_fd, output_fd, run_in_background); // Executa o comando sem pipe
+            Cria_Processo(args, input_fd, output_fd, run_in_background); // Executa o comando sem pipe
         }
     }
+}
