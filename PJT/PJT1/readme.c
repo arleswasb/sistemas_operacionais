@@ -13,7 +13,7 @@ Comando Simples:
 
 osh> ls
 
-Isso deve listar os arquivos e diretórios no diretório atual.
+Isso deve listar os arquivos e diretorios no diretorio atual.
 
 Comando com Argumentos:
 
@@ -21,14 +21,14 @@ osh> ls -l
 
 Isso deve listar os arquivos em formato detalhado.
 
-b) Testar Redirecionamento de Saída
+b) Testar Redirecionamento de Saida
 
-Redirecionamento de Saída:
+Redirecionamento de Saida:
 
 osh> ls > output.txt
 
 
-Isso deve criar (ou sobrescrever) um arquivo chamado output.txt contendo a saída do comando ls.
+Isso deve criar (ou sobrescrever) um arquivo chamado output.txt contendo a saida do comando ls.
 Verifique o arquivo:
 
 cat output.txt
@@ -42,32 +42,32 @@ Depois, teste o comando:
 
 
 osh> sort < input.txt
-Isso deve exibir "banana" (ou a saída ordenada do arquivo, se houver mais palavras).
+Isso deve exibir "banana" (ou a saida ordenada do arquivo, se houver mais palavras).
 
-d)Testar Execução em Segundo Plano
+d)Testar Execucao em Segundo Plano
 
-Execução em Segundo Plano:
+Execucao em Segundo Plano:
 
 osh> sleep 10 &
 
-Isso deve iniciar o comando sleep em segundo plano. Você deve ver uma mensagem informando que o processo foi iniciado em segundo plano.
-Verifique a execução em segundo plano: Você pode continuar a usar o shell enquanto o sleep está em execução.
+Isso deve iniciar o comando sleep em segundo plano. Voce deve ver uma mensagem informando que o processo foi iniciado em segundo plano.
+Verifique a execucao em segundo plano: Voce pode continuar a usar o shell enquanto o sleep esta em execucao.
 
 e) Testar Pipes
 Testar com Pipes:
 
 osh> ls -l | less
 
-Isso deve listar os arquivos e passar a saída para o comando less, permitindo que você role a lista.
+Isso deve listar os arquivos e passar a saida para o comando less, permitindo que voce role a lista.
 
 
-f)Testar Comandos de Histórico
+f)Testar Comandos de Historico
 
-Repetir o Último Comando:
+Repetir o ultimo Comando:
 
 osh> !!
-Isso deve repetir o último comando que você executou.
+Isso deve repetir o ultimo comando que voce executou.
 !!
-Testar a Saída de Comandos Válidos: Se você executou um comando antes, deve vê-lo sendo executado novamente.
+Testar a Saida de Comandos Validos: Se voce executou um comando antes, deve ve-lo sendo executado novamente.
 
 */

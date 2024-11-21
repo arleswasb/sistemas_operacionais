@@ -1,1 +1,0 @@
-cmd_/home/osc/projeto/ch3/pjt2/pjt2_v1/pid_v1.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/osc/projeto/ch3/pjt2/pjt2_v1/pid_v1.ko /home/osc/projeto/ch3/pjt2/pjt2_v1/pid_v1.o /home/osc/projeto/ch3/pjt2/pjt2_v1/pid_v1.mod.o

@@ -11,14 +11,14 @@
 #include <linux/kernel.h>         // Para uso de macros do kernel
 #include <linux/proc_fs.h>        // Para manipulacao do sistema de arquivos /proc
 #include <linux/vmalloc.h>        // Para alocacao de memoria contigua
-#include <asm/uaccess.h>          // Para transferencia de dados entre espaï¿½o do kernel e do usuario
+#include <asm/uaccess.h>          // Para transferencia de dados entre espaço do kernel e do usuario
 
 #define BUFFER_SIZE 128		// Tamanho do buffer de leitura/escrita
 #define PROC_NAME "pid"		// Nome da entrada no /proc
 
 
 /* the current pid */
-static long l_pid = 0;		/* Variavel global para armazenar o PID atual */
+static long l_pid = 0;		/* Variável global para armazenar o PID atual */
 
 /**
  * Function prototypes
@@ -54,32 +54,32 @@ static void proc_exit(void)
 }
 
 /**
- * A Funcao abaixo e chamada cada vez que a entrada /proc/pid e lida.
+ * A Função abaixo é chamada cada vez que a entrada /proc/pid é lida.
  *
- * Esta funcao e chamada repetidamente ate retornar 0, entao
- * ha uma variavel `completed` que garante que a funcao retorne 0
- * apos uma leitura.
+ * Esta função é chamada repetidamente até retornar 0, então
+ * há uma variável `completed` que garante que a função retorne 0
+ * após uma leitura.
  */
 
 static ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, loff_t *pos)
 {
-        int rv = 0;				// Numero de bytes lidos
+        int rv = 0;				// Número de bytes lidos
         char buffer[BUFFER_SIZE];		// Buffer para armazenar dados temporariamente
-        static int completed = 0;		// Variavel para controlar a leitura
-        struct task_struct *tsk = NULL;		// Estrutura de tsk para armazenar informacoes do processo
+        static int completed = 0;		// Variável para controlar a leitura
+        struct task_struct *tsk = NULL;		// Estrutura de tsk para armazenar informações do processo
 
         if (completed) {
                 completed = 0;
-                return 0;			// Retorna 0 para indicar que a leitura foi concluida
+                return 0;			// Retorna 0 para indicar que a leitura foi concluída
         }
 
-        // Obtem a estrutura da tsk (processo) associada ao PID armazenado em l_pid 
+        // Obtém a estrutura da tsk (processo) associada ao PID armazenado em l_pid 
 	// Busca na lista de processos 
 
 	tsk = pid_task(find_vpid(l_pid), PIDTYPE_PID);
 
-	// Se o processo nao for encontrado, informa no buffer
-	//Se for encontrado guarda as informacoes no buffer do kernel
+	// Se o processo não for encontrado, informa no buffer
+	//Se for encontrado guarda as informações no buffer do kernel
 	
 	if (tsk == NULL) {
         	rv = snprintf(buffer, BUFFER_SIZE, "PID %ld nao encontrado\n", l_pid);
@@ -87,20 +87,20 @@ static ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, 
         	rv = snprintf(buffer, BUFFER_SIZE, "PID: %ld\nNome: %s\nEstado: %ld\n",l_pid, tsk->comm, tsk->state);
     	}
 
-        completed = 1;			// Marca como completado para nao repetir a leitura
+        completed = 1;			// Marca como completado para não repetir a leitura
 
         // copies the contents of kernel buffer to userspace usr_buf
-	// Copia o conteudo do buffer do kernel para o buffer do espaco do usuario (usr_buf) 
+	// Copia o conteúdo do buffer do kernel para o buffer do espaço do usuário (usr_buf) 
         
 	if (copy_to_user(usr_buf, buffer, rv)) {
-                rv = -EFAULT; 		// Retorna erro em caso de falha na copia
+                rv = -EFAULT; 		// Retorna erro em caso de falha na cópia
         }
 
-        return rv; 			// Retorna o numero de bytes lidos
+        return rv; 			// Retorna o número de bytes lidos
 }
 
 /**
- * Funcao chamada cada vez que escrevemos na entrada /proc.
+ * Função chamada cada vez que escrevemos na entrada /proc.
 
 
  */static ssize_t proc_write(struct file *file, const char __user *usr_buf, size_t count, loff_t *pos)
@@ -109,19 +109,19 @@ static ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, 
         int ret;            // Variavel para armazenar o valor de retorno de kstrtol
 
         // allocate kernel memory
-	// Aloca memoria para os dados recebidos do usuario (+1 para o caractere nulo)
+	// Aloca memória para os dados recebidos do usuário (+1 para o caractere nulo)
 
         k_mem = kmalloc(count + 1, GFP_KERNEL); // Aloca memoria suficiente para o contendo + 1 byte para o caractere nulo
         
 	if (!k_mem)
         return -ENOMEM;     		// Se a alocacao falhar, retorna erro de memoria insuficiente
 
-        // Copia dados do buffer do usuario para o buffer do kernel
+        // Copia dados do buffer do usuário para o buffer do kernel
 
         if (copy_from_user(k_mem, usr_buf, count)) {
 		printk( KERN_INFO "Error copying from user\n");
-                kfree(k_mem);		// Libera a memoria alocada em caso de erro
-                return -EFAULT;		// Retorna erro de falha na copia
+                kfree(k_mem);		// Libera a memória alocada em caso de erro
+                return -EFAULT;		// Retorna erro de falha na cópia
         }
     
 	k_mem[count] = '\0'; // Adiciona caractere nulo ao final da string
@@ -143,7 +143,7 @@ static ssize_t proc_read(struct file *file, char __user *usr_buf, size_t count, 
         return count;
 }
 
-/* Macros para registrar os pontos de entrada e saida do modulo */
+/* Macros para registrar os pontos de entrada e saída do módulo */
 module_init( proc_init );
 module_exit( proc_exit );
 
